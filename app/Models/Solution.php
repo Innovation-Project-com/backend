@@ -4,28 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-/**
- * Solution Model
- * Represents ERP, TMS, WMS, MRP, IoT solution pages.
- *
- * @property int    $id
- * @property string $name
- * @property string $slug
- * @property string $short_description
- * @property string $description
- * @property array  $benefits   (JSONB)
- * @property array  $features   (JSONB)
- * @property array  $use_cases  (JSONB)
- * @property array  $faq_items  (JSONB)
- * @property string|null $seo_title
- * @property string|null $seo_description
- * @property string|null $og_image
- * @property string $status  (published|draft|archived)
- */
-class Solution extends Model
+class Solution extends Model implements HasMedia
 {
-    use HasFactory;
+    use HasFactory, InteractsWithMedia;
 
     protected $fillable = [
         'name',
@@ -40,13 +24,15 @@ class Solution extends Model
         'seo_description',
         'og_image',
         'status',
+        'sort_order',
     ];
 
     protected $casts = [
-        'benefits'  => 'array',
-        'features'  => 'array',
-        'use_cases' => 'array',
-        'faq_items' => 'array',
+        'benefits'   => 'array',
+        'features'   => 'array',
+        'use_cases'  => 'array',
+        'faq_items'  => 'array',
+        'sort_order' => 'integer',
     ];
 
     /**

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('seo_description')->nullable();
             $table->string('og_image')->nullable();
             $table->string('status', 20)->default('draft');
+            $table->integer('sort_order')->default(0);
             $table->timestamps();
 
             $table->index('status');

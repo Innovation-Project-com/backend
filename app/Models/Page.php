@@ -4,27 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-/**
- * Page Model
- * Represents CMS-driven pages (About, Contact, etc.)
- *
- * @property int    $id
- * @property string $title
- * @property string $slug
- * @property string $page_type
- * @property string|null $hero_title
- * @property string|null $hero_subtitle
- * @property array|null  $content_blocks  (JSONB)
- * @property string|null $seo_title
- * @property string|null $seo_description
- * @property string|null $og_image
- * @property string $status  (published|draft|archived)
- * @property \Carbon\Carbon|null $published_at
- */
-class Page extends Model
+class Page extends Model implements HasMedia
 {
-    use HasFactory;
+    use HasFactory, InteractsWithMedia;
 
     protected $fillable = [
         'title',

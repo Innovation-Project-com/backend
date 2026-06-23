@@ -20,7 +20,7 @@ class PageResource extends JsonResource
             'seo'            => [
                 'title'       => $this->seo_title,
                 'description' => $this->seo_description,
-                'og_image'    => $this->og_image,
+                'og_image'    => $this->getFirstMediaUrl('og_image') ?: $this->og_image,
             ],
             'published_at'   => $this->published_at?->toISOString(),
         ];

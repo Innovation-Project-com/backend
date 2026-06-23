@@ -4,26 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-/**
- * SiteSetting Model
- * Stores global website configuration — singleton pattern (one row).
- *
- * @property int    $id
- * @property string $company_name
- * @property string|null $address
- * @property string|null $phone
- * @property string|null $email
- * @property string|null $logo
- * @property string|null $favicon
- * @property array|null  $social_links  (JSONB)
- * @property string|null $footer_text
- * @property string|null $default_seo_title
- * @property string|null $default_seo_description
- */
-class SiteSetting extends Model
+class SiteSetting extends Model implements HasMedia
 {
-    use HasFactory;
+    use HasFactory, InteractsWithMedia;
 
     protected $fillable = [
         'company_name',

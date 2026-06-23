@@ -39,7 +39,15 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
                 AccountWidget::class,
-                FilamentInfoWidget::class,
+                \App\Filament\Widgets\StatsOverviewWidget::class,
+                \App\Filament\Widgets\PageViewsChartWidget::class,
+                \App\Filament\Widgets\TopPagesWidget::class,
+                \App\Filament\Widgets\TrafficSourceWidget::class,
+                \App\Filament\Widgets\LeadsByStatusWidget::class,
+                \App\Filament\Widgets\RecentLeadsWidget::class,
+                \App\Filament\Widgets\PopularSolutionsWidget::class,
+                \App\Filament\Widgets\PopularPostsWidget::class,
+                \App\Filament\Widgets\RecentPostsWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

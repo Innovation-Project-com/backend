@@ -17,7 +17,7 @@ class SolutionController extends Controller
     {
         $solutions = Solution::published()
             ->orderBy('name')
-            ->get(['id', 'name', 'slug', 'short_description', 'og_image']);
+            ->get();
 
         return response()->json([
             'data'    => SolutionResource::collection($solutions),

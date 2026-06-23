@@ -9,6 +9,8 @@ class SolutionResource extends JsonResource
 {
     public function toArray(Request $request): array
     {
+        $ogImageUrl = $this->getFirstMediaUrl('og_image') ?: $this->og_image;
+
         return [
             'id'                => $this->id,
             'name'              => $this->name,
@@ -19,11 +21,11 @@ class SolutionResource extends JsonResource
             'features'          => $this->features,
             'use_cases'         => $this->use_cases,
             'faq_items'         => $this->faq_items,
-            'og_image'          => $this->og_image,
+            'og_image'          => $ogImageUrl,
             'seo'               => [
                 'title'       => $this->seo_title,
                 'description' => $this->seo_description,
-                'og_image'    => $this->og_image,
+                'og_image'    => $ogImageUrl,
             ],
         ];
     }
